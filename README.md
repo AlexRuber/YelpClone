@@ -8,9 +8,9 @@ Time spent: **1** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] Table rows for search results should be dynamic height according to the content height. (3pt)
-- [ ] Custom cells should have the proper Auto Layout constraints. (+5pt)
-- [ ] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does). (+2pt)
+- [X] Table rows for search results should be dynamic height according to the content height. (3pt)
+- [X] Custom cells should have the proper Auto Layout constraints. (+5pt)
+- [X] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does). (+2pt)
 
 The following **stretch** features are implemented:
 
@@ -19,25 +19,28 @@ The following **stretch** features are implemented:
 - [ ] Implement the restaurant detail page. (+2pt)
 
 The following **additional** features are implemented:
+- [X] Added star functionality to individual tableview cell (+2pt)
+- [X] Added customized scope filtering functions under search bar (+2pt)
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. One difficult thing was that the demo project came in Swift 3, and I was writing in Swift 4 so using scopes and 
+   search bars were a bit of a hassle that's why the UI may seem a bit off at first
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/2EMPgwd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Describe any challenges encountered while building the app. Definitely the search and the scope filter 
+took a bit of time due to language conversion. 
 
 ## License
 
