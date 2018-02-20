@@ -24,6 +24,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,16 +32,22 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.estimatedRowHeight = 120
         
         // Setting up the Search Controller
-        searchBar.sizeToFit()
+        searchController.searchBar.sizeToFit()
+        navigationItem.searchController = searchController
         navigationItem.titleView = searchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search restaurants..."
-        //navigationItem.searchController = searchController
         searchController.searchBar.sizeToFit()
         navigationItem.titleView = searchController.searchBar
+        
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
+        
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.isTranslucent = false
+        searchController.searchBar.scopeButtonTitles = ["All", "Bars", "Fast Food", "Vegetarian"]
+        searchController.searchBar.delegate = self
         
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
@@ -85,6 +92,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as? BusinessCell {
+
             let business: Business
             if isFiltering() {
                 business = filteredBusinesses[indexPath.row]
@@ -98,7 +106,8 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.addressLabel.text = business.address
             cell.distanceLabel.text = business.distance
             cell.categoriesLabel.text = business.categories
-            cell.reviewsCountLabel.text = business.categories
+            let tempNumber = business.reviewCount as! Int
+            cell.reviewsCountLabel.text = ("\(String(tempNumber)) reviews")
             
             return cell
         } else {
@@ -119,14 +128,22 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredBusinesses = businesses.filter({ (business: Business) -> Bool in
-            return (business.name?.lowercased().contains(searchText.lowercased()))!
+            let doesCategoryMatch = (scope == "All") || (business.categories == scope)
+            
+            if searchBarIsEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && (business.name?.lowercased().contains(searchText.lowercased()))!
+            }
         })
         
         tableView.reloadData()
     }
     
     func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+        
     }
     
     /*
@@ -141,11 +158,25 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     
 }
 
-extension BusinessesViewController: UISearchResultsUpdating {
+extension BusinessesViewController: UISearchResultsUpdating{
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-        
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
-    
+
 }
+
+extension BusinessesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+
+
+
+
+
+

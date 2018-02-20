@@ -18,7 +18,11 @@ class BusinessCell: UITableViewCell {
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var reviewsCountLabel: UILabel!
+    @IBOutlet weak var heartPopup: UIImageView!
     
+    @IBOutlet weak var rememberLike: UIImageView!
+    
+    @IBOutlet weak var liked: UIImageView!
     // Variables
     var business: Business! {
         didSet {
@@ -35,7 +39,16 @@ class BusinessCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         // Initialization code
+        // Double tap
+        liked.isHidden = true
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(BusinessCell.likeAnimation))
+        tapGR.delegate = self
+        tapGR.numberOfTapsRequired = 2
+        self.addGestureRecognizer(tapGR)
+        
+        
         thumbImageView.layer.cornerRadius = 5
         thumbImageView.clipsToBounds = true
         
@@ -55,3 +68,25 @@ class BusinessCell: UITableViewCell {
     }
 
 }
+extension BusinessCell {
+    @objc func likeAnimation() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .allowUserInteraction, animations: {() -> Void in
+            self.heartPopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.heartPopup.alpha = 1.0
+        }, completion: {(_ finished: Bool) -> Void in
+            UIView.animate(withDuration: 0.1, delay: 0, options: .allowUserInteraction, animations: {() -> Void in
+                self.heartPopup.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: {(_ finished: Bool) -> Void in
+                UIView.animate(withDuration: 0.3, delay: 0, options: .allowUserInteraction, animations: {() -> Void in
+                    self.heartPopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    self.heartPopup.alpha = 0.0
+                }, completion: {(_ finished: Bool) -> Void in
+                    self.heartPopup.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                })
+            })
+        })
+        liked.isHidden = false
+    }
+}
+
+

@@ -22,11 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w7Q-iq-MHK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w7Q-iq-MHK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="120" id="Cxl-ua-ucl" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="120" id="Cxl-ua-ucl" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cxl-ua-ucl" id="Zeq-In-pvq">
@@ -83,6 +83,27 @@
                                                     <color key="textColor" red="0.60580974460000003" green="0.58132027880000003" blue="0.64976090990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="ihy-zf-i5I">
+                                                    <rect key="frame" x="152" y="25.5" width="70" height="68"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="WtX-p7-SfF"/>
+                                                        <constraint firstAttribute="height" constant="68" id="bIc-kk-IrO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outline" translatesAutoresizingMaskIntoConstraints="NO" id="bFO-2H-M1W">
+                                                    <rect key="frame" x="349" y="92" width="18" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="HJq-1D-X7L"/>
+                                                        <constraint firstAttribute="width" constant="18" id="aVj-Ja-ThS"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="pwA-Pl-B3M">
+                                                    <rect key="frame" x="351" y="94" width="14.5" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14.5" id="BKY-Xo-uX2"/>
+                                                        <constraint firstAttribute="width" constant="14.5" id="aAd-xh-Z02"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BYh-LV-org" firstAttribute="leading" secondItem="qo4-8q-phU" secondAttribute="trailing" constant="8" id="3aJ-th-fyE"/>
@@ -90,10 +111,15 @@
                                                 <constraint firstItem="7VZ-Rv-GYB" firstAttribute="centerY" secondItem="BYh-LV-org" secondAttribute="centerY" id="8Je-YJ-XqU"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="qo4-8q-phU" secondAttribute="bottom" constant="12" id="9Tm-vH-Gd2"/>
                                                 <constraint firstItem="Zo1-3S-Uhv" firstAttribute="top" secondItem="Zeq-In-pvq" secondAttribute="topMargin" id="Dru-Vb-3nv"/>
+                                                <constraint firstAttribute="bottom" secondItem="pwA-Pl-B3M" secondAttribute="bottom" constant="11" id="GK1-7f-0qK"/>
+                                                <constraint firstAttribute="trailing" secondItem="pwA-Pl-B3M" secondAttribute="trailing" constant="9.5" id="HbT-qk-zbo"/>
                                                 <constraint firstItem="VGp-0o-IAV" firstAttribute="top" secondItem="D56-fo-uCO" secondAttribute="bottom" constant="5" id="HrK-gH-fjk"/>
                                                 <constraint firstItem="543-RG-XFE" firstAttribute="leading" secondItem="CRT-uU-NXv" secondAttribute="leading" id="IWp-cN-b1y"/>
                                                 <constraint firstAttribute="trailing" secondItem="CRT-uU-NXv" secondAttribute="trailing" constant="8" id="LfA-dE-1BK"/>
+                                                <constraint firstItem="ihy-zf-i5I" firstAttribute="centerY" secondItem="Zeq-In-pvq" secondAttribute="centerY" id="NAT-ei-r7q"/>
                                                 <constraint firstAttribute="trailing" secondItem="VGp-0o-IAV" secondAttribute="trailing" constant="15" id="OLq-gy-oge"/>
+                                                <constraint firstAttribute="trailing" secondItem="bFO-2H-M1W" secondAttribute="trailing" constant="8" id="SCG-bi-GWR"/>
+                                                <constraint firstItem="ihy-zf-i5I" firstAttribute="centerX" secondItem="Zeq-In-pvq" secondAttribute="centerX" id="UCn-vy-AHX"/>
                                                 <constraint firstItem="qo4-8q-phU" firstAttribute="leading" secondItem="Zeq-In-pvq" secondAttribute="leadingMargin" id="WNU-l9-7Nt"/>
                                                 <constraint firstItem="D56-fo-uCO" firstAttribute="leading" secondItem="Zo1-3S-Uhv" secondAttribute="trailing" constant="8" id="Xb2-6W-WoR"/>
                                                 <constraint firstItem="D56-fo-uCO" firstAttribute="trailing" secondItem="Zeq-In-pvq" secondAttribute="trailingMargin" id="aWG-5E-1bV"/>
@@ -102,6 +128,7 @@
                                                 <constraint firstItem="Zo1-3S-Uhv" firstAttribute="leading" secondItem="qo4-8q-phU" secondAttribute="trailing" constant="8" id="kJn-02-0q5"/>
                                                 <constraint firstItem="qo4-8q-phU" firstAttribute="top" secondItem="Zeq-In-pvq" secondAttribute="topMargin" id="l8g-HK-wJA"/>
                                                 <constraint firstItem="7VZ-Rv-GYB" firstAttribute="leading" secondItem="BYh-LV-org" secondAttribute="trailing" constant="5" id="q7e-vT-r6O"/>
+                                                <constraint firstAttribute="bottom" secondItem="bFO-2H-M1W" secondAttribute="bottom" constant="9.5" id="qcW-NW-fdL"/>
                                                 <constraint firstItem="BYh-LV-org" firstAttribute="top" secondItem="Zo1-3S-Uhv" secondAttribute="bottom" constant="5" id="u6A-3M-i2a"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="543-RG-XFE" secondAttribute="bottom" constant="12" id="utV-O3-sez"/>
                                                 <constraint firstItem="CRT-uU-NXv" firstAttribute="top" secondItem="BYh-LV-org" secondAttribute="bottom" constant="4" id="zAF-0M-zyN"/>
@@ -111,8 +138,11 @@
                                             <outlet property="addressLabel" destination="CRT-uU-NXv" id="Dxv-cS-mnB"/>
                                             <outlet property="categoriesLabel" destination="543-RG-XFE" id="2NF-gf-5K4"/>
                                             <outlet property="distanceLabel" destination="D56-fo-uCO" id="uEL-pp-mWi"/>
+                                            <outlet property="heartPopup" destination="ihy-zf-i5I" id="QDb-t8-ehB"/>
+                                            <outlet property="liked" destination="pwA-Pl-B3M" id="o4x-zC-w2f"/>
                                             <outlet property="nameLabel" destination="Zo1-3S-Uhv" id="YEl-dv-xxE"/>
                                             <outlet property="ratingImageView" destination="BYh-LV-org" id="uyl-Do-2JG"/>
+                                            <outlet property="rememberLike" destination="bFO-2H-M1W" id="abL-EM-5r8"/>
                                             <outlet property="reviewsCountLabel" destination="7VZ-Rv-GYB" id="uue-fC-QYY"/>
                                             <outlet property="thumbImageView" destination="qo4-8q-phU" id="qgY-Vi-IFl"/>
                                         </connections>
@@ -149,7 +179,6 @@
         <!--Navigation Controller-->
         <scene sceneID="2SK-Ng-yN1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-Hv-NiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gAd-fl-6rW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dok-K1-YP0">
@@ -164,8 +193,13 @@
                         <segue destination="2xI-yr-O5N" kind="relationship" relationship="rootViewController" id="GJL-59-ZoN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-Hv-NiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1787.2" y="357.12143928035982"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart" width="525" height="501"/>
+        <image name="outline" width="525" height="500"/>
+    </resources>
 </document>
